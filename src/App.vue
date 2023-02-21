@@ -1,5 +1,12 @@
 <script setup>
-  console.log("Hello from Vue and Vite");
+import {usePlanetsStore} from "./store/planets";
+
+  const store = usePlanetsStore();
+  const planets = store.planets;
+  console.log(planets);
+  planets.forEach((currentPlanet) => {
+    console.log(currentPlanet.name)
+  })
 </script>
 
 <template>
