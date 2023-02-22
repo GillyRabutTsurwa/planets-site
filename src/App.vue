@@ -1,5 +1,5 @@
 <script setup>
-import useFilterPlanet from "./composables/filterPlanet";
+import useFilterPlanet from "@/composables/filterPlanet";
 const { state } = useFilterPlanet();
 </script>
 

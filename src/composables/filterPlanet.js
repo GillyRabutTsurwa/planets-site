@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import planets from "../data/data.json";
+import planets from "@/data/data.json";
 
 const useFilterPlanet = () => {
   const state = reactive({

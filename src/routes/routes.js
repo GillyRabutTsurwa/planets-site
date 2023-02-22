@@ -1,6 +1,6 @@
-import Home from "../pages/index.vue";
-import About from "../pages/about/index.vue";
-import Planet from "../pages/planet/index.vue";
+import Home from "@/pages/index.vue";
+import About from "@/pages/about/index.vue";
+import Planet from "@/pages/planet/index.vue";
 
 const routes = [
   { name: "Home", path: "/", component: Home },

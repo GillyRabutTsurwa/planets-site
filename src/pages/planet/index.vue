@@ -1,7 +1,7 @@
 <script setup>
 import {useRoute} from "vue-router";
 import { onMounted, toRef } from "vue";
-import useFilterPlanet from "../../composables/filterPlanet";
+import useFilterPlanet from "@/composables/filterPlanet";
 
 const route = useRoute();
 const slug = route.params.slug;
