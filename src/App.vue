@@ -1,20 +1,18 @@
 <script setup>
-import {usePlanetsStore} from "./store/planets";
-
-  const store = usePlanetsStore();
-  const planets = store.planets;
-  console.log(planets);
-  planets.forEach((currentPlanet) => {
-    console.log(currentPlanet.name)
-  })
+import useFilterPlanet from "./composables/filterPlanet";
+const { state } = useFilterPlanet();
 </script>
 
 <template>
   <div>
+    <RouterLink v-for="(currentLink, index) in state.planets" :key="index" :to="`/${currentLink.name.toLowerCase()}`">
+      {{currentLink.name}}
+    </RouterLink>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/about">About</RouterLink>
   </div>
-  <RouterView/>
+  <!-- <code>{{ store.planets }}</code> -->
+  <RouterView :key="$route.params"/>
 </template>
 
 <style lang="scss" scoped>
