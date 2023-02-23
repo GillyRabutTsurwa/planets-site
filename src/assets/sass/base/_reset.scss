@@ -1,51 +1,52 @@
 @use "../abstracts/variables";
 * {
-  &,
-  &::before,
-  &::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    &,
+    &::before,
+    &::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 }
 
 html,
 body,
 #app {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  color: #f4f4f4;
-  font-size: 1.6rem;
+    color: #f4f4f4;
+    font-size: 1.6rem;
+    font-family: "Spartan", sans-serif;
 }
 
 #app {
-  position: relative;
-  background-color: #070722;
-  background-image: url(@/assets/img/background-stars.svg);
+    position: relative;
+    background-color: #070722;
+    background-image: url(@/assets/img/background-stars.svg);
 
-  &::after {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 2px;
-    top: -2px;
-    background: white;
-    border-radius: 100px;
-    box-shadow: variables.$constellation;
-  }
+    &::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 2px;
+        top: -2px;
+        background: white;
+        border-radius: 100px;
+        box-shadow: variables.$constellation;
+    }
 }
 
 a {
-  // @note - peut-être placer ce code dans un mixin. mais ça c'est génial aussi
-  cursor: pointer;
-  color: unset;
-  text-decoration: unset;
+    // @note - peut-être placer ce code dans un mixin. mais ça c'est génial aussi
+    cursor: pointer;
+    color: unset;
+    text-decoration: unset;
 }

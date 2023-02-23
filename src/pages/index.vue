@@ -11,7 +11,7 @@ const getImgURL = (imageName) => {
     return new URL(`../assets/img/planet-${imageName}.svg`, import.meta.url);
 }
 </script>
-        
+
 <template>
     <div class="canvas">
         <!-- <img :src="imageUrl" alt="getdeez"> -->
