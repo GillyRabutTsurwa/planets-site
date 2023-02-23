@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from "vue-router";
-import { onMounted, toRef } from "vue";
+import { ref, onMounted, toRef } from "vue";
 import useFilterPlanet from "@/composables/filterPlanet";
 
 const route = useRoute();
@@ -9,6 +9,11 @@ console.log(route.params);
 
 const { state, filterPlanette } = useFilterPlanet();
 
+// NOTE: refs for changing content on button click. look at toggleContent function
+const currentContent = ref("");
+const currentSource = ref("");
+
+
 // TESTING
 // const x = toRef(state, "selectPlanet");
 
@@ -16,21 +21,27 @@ filterPlanette(slug);
 console.log(state.selectPlanet);
 const { geology, images, name, overview, radius, revolution, rotation, structure, temperature } = state.selectPlanet;
 
-//NOTE: i am accessing images.geology separately and don't need it in the obejct used to render the main and internal images
-//NOTE: therefore i will make a new object that does NOT contain the geology property
 
-//NOTE: making a new duplicate object of images called updated images so that images stays unaffected through property deletion
 const updatedImages = { ...images };
-// NOTE; deleting the property from our new duplicate object
 delete updatedImages.geology
-//TESTING to see if it works
 console.log(updatedImages);
-//PASS
 
 
 const getImgURL = (imageName) => {
     return new URL(`../../assets/img/${imageName}`, import.meta.url);
 }
+
+// NEW: toggle between content
+// NOTE: will put these two into one function later
+
+const toggleContent = (obj = overview) => {
+    currentContent.value = obj.content;
+    currentSource.value = obj.source;
+}
+
+onMounted(() => {
+    toggleContent();
+})
 
 
 </script>
@@ -44,13 +55,29 @@ const getImgURL = (imageName) => {
             <!-- this below element will be my "pseudoelement" -->
             <img v-if="images.geology" :src="getImgURL(images.geology)" alt="">
         </figure>
+        <article>
+            <h2>{{ name }}</h2>
+            <p>{{ currentContent }}</p>
+            <!-- NOTE: will put buttons in loop much later -->
+            <button @click="toggleContent(overview)">Overview</button>
+            <button @click="toggleContent(structure)">Internal Structure</button>
+            <button @click="toggleContent(geology)">Surface Geology</button>
+        </article>
     </div>
     <h2>{{ name }}</h2>
 </template>
 
 
 <style lang="scss" scoped>
-h2 {
-    color: black;
+.planet-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 0 auto;
+    max-width: 111rem;
+}
+
+// NOTE: will change later
+figure {
+    position: relative;
 }
 </style>
