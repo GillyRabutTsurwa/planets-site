@@ -11,7 +11,7 @@ export default defineConfig({
         additionalData: `@use "./src/assets/sass/abstracts/_variables.scss";
         @use "./src/assets/sass/abstracts/_mixins.scss";
         @use "./src/assets/sass/base/_reset.scss";
-          @use "./src/assets/sass/main.scss";`,
+        @use "./src/assets/sass/main.scss";`,
       },
     },
   },

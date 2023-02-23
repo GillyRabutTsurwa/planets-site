@@ -9,7 +9,7 @@ const useFilterPlanet = () => {
 
   const filterPlanette = (planetName) => {
     const filteredPlanetArr = planets.filter((currentPlanet) => {
-      // to lowercase because it is capitalised in the data
+      // @note - to lowercase because it is capitalised in the data
       return currentPlanet.name.toLowerCase() === planetName;
     });
     state.selectPlanet = { ...filteredPlanetArr[0] };
