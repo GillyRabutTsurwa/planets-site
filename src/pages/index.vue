@@ -46,8 +46,8 @@ const getImgURL = (imageName) => {
 
     // NOTE: class names that starts with planet. ie: planet-mercury, planet-earth etc
     //NOTE: just used this to target all the links together and put the same styles on them.
-    // a[class^="planet-"] {
-    a {
+    a[class^="planet-"] {
+        // a {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -71,6 +71,13 @@ const getImgURL = (imageName) => {
             -webkit-transition: transform 300ms ease;
             transition: transform 300ms ease;
         }
+
+        &:hover::before {
+            -webkit-transform: scale(1.5) translate(-50%, -50%);
+            -ms-transform: scale(1.5) translate(-50%, -50%);
+            transform: scale(1.5) translate(-50%, -50%);
+        }
+
     }
 
     .planet {
@@ -89,6 +96,10 @@ const getImgURL = (imageName) => {
                 background-image: url("../assets/img/planet-mercury.svg");
                 background-size: cover;
             }
+
+            &:hover {
+                border: 1px solid #419db9;
+            }
         }
 
         &-venus {
@@ -103,6 +114,10 @@ const getImgURL = (imageName) => {
                 width: 15px;
                 background-image: url("../assets/img/planet-venus.svg");
                 background-size: cover;
+            }
+
+            &:hover {
+                border: 1px solid #eda44a;
             }
         }
 
@@ -120,6 +135,10 @@ const getImgURL = (imageName) => {
                 background-size: cover;
 
             }
+
+            &:hover {
+                border: 1px solid #6f2ed6;
+            }
         }
 
         &-mars {
@@ -136,6 +155,10 @@ const getImgURL = (imageName) => {
                 background-size: cover;
 
             }
+
+            &:hover {
+                border: 1px solid #d14e33;
+            }
         }
 
         &-jupiter {
@@ -150,6 +173,10 @@ const getImgURL = (imageName) => {
                 height: 36px;
                 background-image: url("../assets/img/planet-jupiter.svg");
                 background-size: cover;
+            }
+
+            &:hover {
+                border: 1px solid #d93b36
             }
         }
 
@@ -168,6 +195,10 @@ const getImgURL = (imageName) => {
                 background-position: center;
                 background-repeat: no-repeat;
             }
+
+            &:hover {
+                border: 1px solid #cb5020
+            }
         }
 
         &-uranus {
@@ -183,6 +214,10 @@ const getImgURL = (imageName) => {
                 background-image: url("../assets/img/planet-uranus.svg");
                 background-size: cover;
             }
+
+            &:hover {
+                border: 1px solid #1ec2a4
+            }
         }
 
         &-neptune {
@@ -197,6 +232,10 @@ const getImgURL = (imageName) => {
                 height: 20px;
                 background-image: url("../assets/img/planet-neptune.svg");
                 background-size: cover;
+            }
+
+            &:hover {
+                border: 1px solid hsl(222, 87%, 56%);
             }
 
         }
