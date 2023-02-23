@@ -24,12 +24,23 @@ html {
 body {
   color: #f4f4f4;
   font-size: 1.6rem;
-  background-image: url(@/assets/img/background-stars.svg);
 }
 
 #app {
+  position: relative;
   background-color: #070722;
   background-image: url(@/assets/img/background-stars.svg);
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 2px;
+    top: -2px;
+    background: white;
+    border-radius: 100px;
+    box-shadow: variables.$constellation;
+  }
 }
 
 a {
