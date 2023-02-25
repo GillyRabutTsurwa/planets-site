@@ -6,8 +6,6 @@ const { state } = useFilterPlanet();
 
 <template>
   <Header :links="state.planets" />
-  <!-- line below very important in making RouterLinks able to update data -->
-  <!-- thanks to link here: https://stackoverflow.com/questions/62868980/vue-js-router-link-not-updating -->
   <RouterView :key="$route.params" />
 </template>
 

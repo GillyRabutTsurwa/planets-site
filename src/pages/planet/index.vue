@@ -106,7 +106,7 @@ onMounted(() => {
 figure {
     position: relative;
     grid-column: 1 / 2;
-    height: 66rem;
+    height: 60rem;
 
     img {
         position: absolute;
