@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from "vue-router";
-import { ref, onMounted, toRef } from "vue";
+import { ref, onMounted, watch, toRef } from "vue";
 import useFilterPlanet from "@/composables/filterPlanet";
 
 const route = useRoute();
@@ -31,24 +31,40 @@ const getImgURL = (imageName) => {
 // NEW: toggle between content
 // NOTE: will put these two into one function later
 
-const toggleContent = (obj = overview) => {
+const toggleContent = (obj = overview, e) => {
     currentContent.value = obj.content;
     currentSource.value = obj.source;
+
+    if (e) {
+        console.log(e.target.dataset.type)
+    }
+    else {
+        console.log("no e")
+    }
 };
+
+//TESTING: j'essaie de retrouver info de l'objet
+const imgoverview = ref(null);
 
 onMounted(() => {
     toggleContent();
+    console.log(imgoverview.value.dataset.type);
 });
+
+// NOTE: I finally get what this code does
+watch(currentContent, (newValue, oldValue) => {
+    console.log("New: " + newValue);
+    console.log("Old: " + oldValue);
+})
 </script>
 
 <template>
     <div class="planet-container">
         <figure>
-            <!-- then in the template, i am using updatedImages, instead of images -->
-            <img v-for="(currentImage, currentProperty) in updatedImages" :key="currentImage" :src="getImgURL(currentImage)"
-                :alt="currentProperty" />
-            <!-- this below element will be my "pseudoelement" -->
-            <img v-if="images.geology" :src="getImgURL(images.geology)" alt="" />
+            <img v-if="images.planet" :src="getImgURL(images.planet)" ref="imgoverview" data-type="overview" alt="" />
+            <img v-else :src="getImgURL(images.internal)" ref="img-internal" alt="">
+            <!-- this will be our "pseudoelement" -->
+            <img v-if="images.planet && images.geology" :src="getImgURL(images.geology)" ref="img-geology" alt="" />
         </figure>
         <article>
             <h2>{{ name }}</h2>
@@ -69,15 +85,15 @@ onMounted(() => {
             <!--  -->
             <div class="buttons">
                 <!-- NOTE: will put buttons in loop much later -->
-                <button @click="toggleContent(overview)">
+                <button @click="toggleContent(overview, $event)" data-type="overview">
                     <span>01</span>
                     <span>Overview</span>
                 </button>
-                <button @click="toggleContent(structure)">
+                <button @click="toggleContent(structure, $event)" data-type="internal">
                     <span>02</span>
                     <span>Internal Structure</span>
                 </button>
-                <button @click="toggleContent(geology)">
+                <button @click="toggleContent(geology, $event)" data-type="geology">
                     <span>03</span>
                     <span>Surface Geology</span>
                 </button>
@@ -106,7 +122,6 @@ onMounted(() => {
 figure {
     position: relative;
     grid-column: 1 / 2;
-    height: 60rem;
 
     img {
         position: absolute;
@@ -202,12 +217,11 @@ article {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 4rem;
     justify-content: space-around;
-    // text-align: center;
-    padding-top: bottom;
+    align-items: center;
 
     div {
         border: 1px solid rgb(55, 55, 78);
-        padding: 4rem 3rem;
+        padding: 2.5rem 3rem;
 
         h4 {
             font-size: 1.1rem;

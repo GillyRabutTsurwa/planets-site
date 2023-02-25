@@ -13,8 +13,7 @@ html,
 body,
 #app {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    // height: 100%;
 }
 
 html {
@@ -31,6 +30,7 @@ body {
     position: relative;
     background-color: #070722;
     background-image: url(@/assets/img/background-stars.svg);
+    min-height: 100vh;
 
     &::after {
         content: "";
