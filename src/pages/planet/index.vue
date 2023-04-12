@@ -83,22 +83,22 @@ watch(currentContent, (newValue, oldValue) => {
                 </a>
             </div>
             <!--  -->
-            <div class="buttons">
-                <!-- NOTE: will put buttons in loop much later -->
-                <button @click="toggleContent(overview, $event)" data-type="overview">
-                    <span>01</span>
-                    <span>Overview</span>
-                </button>
-                <button @click="toggleContent(structure, $event)" data-type="internal">
-                    <span>02</span>
-                    <span>Internal Structure</span>
-                </button>
-                <button @click="toggleContent(geology, $event)" data-type="geology">
-                    <span>03</span>
-                    <span>Surface Geology</span>
-                </button>
-            </div>
         </article>
+        <div class="buttons">
+            <!-- NOTE: will put buttons in loop much later -->
+            <button @click="toggleContent(overview, $event)" data-type="overview">
+                <span>01</span>
+                <span>Overview</span>
+            </button>
+            <button @click="toggleContent(structure, $event)" data-type="internal">
+                <span>02</span>
+                <span>Internal Structure</span>
+            </button>
+            <button @click="toggleContent(geology, $event)" data-type="geology">
+                <span>03</span>
+                <span>Surface Geology</span>
+            </button>
+        </div>
         <div class="stats">
             <div v-for="(currentValue, currentProperty) in { rotation, revolution, radius, temperature }"
                 :key="currentValue">
@@ -122,12 +122,16 @@ watch(currentContent, (newValue, oldValue) => {
 figure {
     position: relative;
     grid-column: 1 / 2;
+    width: 60rem;
+    min-height: 50rem;
 
     img {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
     }
 }
 
