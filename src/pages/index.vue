@@ -27,7 +27,7 @@ const getImgURL = (imageName) => {
 .canvas {
     position: relative;
     width: 100%;
-    height: calc(100% - 8.5rem); //@note - 8.5rem = height header. wait is there a difference between that and height: 100%; dans ce cas-ci ?
+    min-height: calc(100vh - 8.5rem); //@note - 8.5rem = height header. wait is there a difference between that and height: 100%; dans ce cas-ci ?
 
     .sun {
         position: absolute;

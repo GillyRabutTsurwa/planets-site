@@ -35,12 +35,7 @@ const toggleContent = (obj = overview, e) => {
     currentContent.value = obj.content;
     currentSource.value = obj.source;
 
-    if (e) {
-        console.log(e.target.dataset.type)
-    }
-    else {
-        console.log("no e")
-    }
+
 };
 
 //TESTING: j'essaie de retrouver info de l'objet
@@ -53,8 +48,8 @@ onMounted(() => {
 
 // NOTE: I finally get what this code does
 watch(currentContent, (newValue, oldValue) => {
-    console.log("New: " + newValue);
     console.log("Old: " + oldValue);
+    console.log("New: " + newValue);
 })
 </script>
 
@@ -64,7 +59,7 @@ watch(currentContent, (newValue, oldValue) => {
             <img v-if="images.planet" :src="getImgURL(images.planet)" ref="imgoverview" data-type="overview" alt="" />
             <img v-else :src="getImgURL(images.internal)" ref="img-internal" alt="">
             <!-- this will be our "pseudoelement" -->
-            <img v-if="images.planet && images.geology" :src="getImgURL(images.geology)" ref="img-geology" alt="" />
+            <!-- <img v-if="images.planet && images.geology" :src="getImgURL(images.geology)" ref="img-geology" alt="" /> -->
         </figure>
         <article>
             <h2>{{ name }}</h2>
@@ -114,24 +109,27 @@ watch(currentContent, (newValue, oldValue) => {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 2rem;
+    padding: 5rem 0;
     margin: 0 auto;
     max-width: 110rem;
+    // height: calc(100vh - 8.5rem);
 }
 
 // NOTE: will change later
 figure {
-    position: relative;
     grid-column: 1 / 2;
-    width: 60rem;
-    min-height: 50rem;
+    grid-row: 1 / 3;
+    display: grid;
+    place-items: center;
+    // height: 100%;
+    // width: 60rem;
+    // min-height: 50rem;
 
     img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
+
+        // transform: translate(-50%, -50%);
+        // width: 80%;
+        // height: 80%;
     }
 }
 
